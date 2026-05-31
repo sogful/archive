@@ -1,45 +1,45 @@
-//   "exact phrase"
-//   sog OR fog
-//   +yeahhhh
-//   -word / -"phrase"
-//   #tag / $cashtag
-//   @user
-//   from:user / to:user
-//   lang:en
-//   url:domain
+// "exact phrase"
+// sog OR fog
+// +yeahhhh
+// -word / -"phrase"
+// #tag / $cashtag
+// @user
+// from:user / to:user
+// lang:en
+// url:domain
 
-//   since:YYYY-MM-DD
-//   until:YYYY-MM-DD
-//   since_id:ID / max_id:ID
-//   since_time:N / until_time:N
-//   within_time:5m
+// since:YYYY-MM-DD
+// until:YYYY-MM-DD
+// since_id:ID / max_id:ID
+// since_time:N / until_time:N
+// within_time:5m
 
-//   min_faves:N
-//   min_retweets / min_replies    same shape
-//   min_quotes / min_views        same shape
+// min_faves:N
+// min_retweets / min_replies    same shape
+// min_quotes / min_views        same shape
 
-//   filter:retweets / -filter:retweets
-//   filter:replies
-//   filter:self_threads
-//   filter:quote
-//   filter:has_engagement
+// filter:retweets / -filter:retweets
+// filter:replies
+// filter:self_threads
+// filter:quote
+// filter:has_engagement
 
-//   filter:media
-//   filter:twimg
-//   filter:images
-//   filter:videos
-//   filter:native_video
-//   filter:consumer_video
-//   filter:pro_video
+// filter:media
+// filter:twimg
+// filter:images
+// filter:videos
+// filter:native_video
+// filter:consumer_video
+// filter:pro_video
 
-//   filter:links
-//   filter:mentions
-//   filter:hashtags
-//   filter:safe
-//   filter:verified
+// filter:links
+// filter:mentions
+// filter:hashtags
+// filter:safe
+// filter:verified
 
-//   conversation_id:ID
-//   quoted_tweet_id:ID
+// conversation_id:ID
+// quoted_tweet_id:ID
 
 /*//////////////////////////////////////////////////////////////////////*/
 

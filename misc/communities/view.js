@@ -102,7 +102,6 @@ async function init() {
             detailbodyel.innerHTML = '<div class="detail"><div class="placeholder">loading...</div></div>';
         }
 
-        // 2) load users + tweets in parallel, one fetch each
         startloadprogress();
         const usersurl  = folder + "/users.json";
         const tweetsurl = folder + "/tweets.json";
@@ -111,7 +110,6 @@ async function init() {
             fetchwithprogress(tweetsurl, "tweets"),
         ]);
         statusel.remove();
-        // parse on main thread (tweets.json can be ~75 MB)
         state.users = JSON.parse(usersblob);
         for (const u of state.users) state.userbyid.set(u.id, u);
         const tweets = JSON.parse(tweetsblob);
@@ -170,7 +168,6 @@ function finishloadprogress() {
     }, 1400);
 }
 
-// streamed fetch -> progress bar. tries .gz first, falls back to .json
 async function fetchwithprogress(url, key) {
     const cangz = typeof DecompressionStream !== "undefined";
     if (cangz) {
@@ -179,9 +176,8 @@ async function fetchwithprogress(url, key) {
             if (r.ok && r.body) {
                 return await consumegzipbody(r, key);
             }
-        } catch (e) { /* fall through to plain */ }
+        } catch (e) {}
     }
-    // plain json path
     const r = await fetch(url);
     if (!r.ok) throw new Error(url + " HTTP " + r.status);
     return await consumeplainbody(r, key);
@@ -217,12 +213,10 @@ async function consumeplainbody(r, key) {
 }
 
 async function consumegzipbody(r, key) {
-    // track compressed bytes (that's what's actually downloaded)
     const total = parseInt(r.headers.get("content-length") || "0", 10) || 0;
     loadprog.totals.set(key, total);
     loadprog.loaded.set(key, 0);
     updateloadprogress();
-    // count gz bytes before decompression so the bar tracks download
     const counter = new TransformStream({
         transform(chunk, controller) {
             loadprog.loaded.set(key, (loadprog.loaded.get(key) || 0) + chunk.length);
@@ -279,6 +273,7 @@ function renderheader(meta) {
         (fullmembers ? '<div class="metarow">' + fullmembers + '</div>' : '') +
         '</div>' +
         '</div>';
+    emojify(headerel);
 }
 
 /*//////////////////////////////////////////////////////////////////////*/
@@ -431,7 +426,7 @@ function observelazyin(root) {
         el.setAttribute("data-lazy-watched", "1");
         lazyobserver.observe(el);
     }
-    // pauser that also doesn't seem to work
+    // ACTUAL autoplay now
     if (videovisibilityobserver) {
         for (const v of root.querySelectorAll("video:not([data-vis-watched])")) {
             v.setAttribute("data-vis-watched", "1");
@@ -440,13 +435,19 @@ function observelazyin(root) {
     }
 }
 
+// (if halfway on screen)
 const videovisibilityobserver = ("IntersectionObserver" in window)
     ? new IntersectionObserver((entries) => {
         for (const e of entries) {
             const v = e.target;
-            if (!e.isIntersecting && !v.paused) v.pause();
+            if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+                const pr = v.play();
+                if (pr && pr.catch) pr.catch(() => {});
+            } else if (!v.paused) {
+                v.pause();
+            }
         }
-    }, {threshold: 0.05})
+    }, {threshold: [0, 0.5]})
     : null;
 
 async function hydratequote(el) {
@@ -470,6 +471,7 @@ async function hydratequote(el) {
         opentweetdetail(q.id);
     });
     hydrateunresolvedtco(newel);
+    emojify(newel);
 }
 
 /*//////////////////////////////////////////////////////////////////////*/
@@ -572,6 +574,7 @@ function applylinkcardmeta(el, meta) {
             '</div>';
     el.classList.add("rich");
     el.innerHTML = html;
+    emojify(el);
 }
 
 function rendertweet(t, opts) {
@@ -596,7 +599,7 @@ function rendertweet(t, opts) {
     const dname = decodeandescape(u.display_name || u.username || "(unknown)");
     const handle = u.username ? "@" + u.username : "@" + (t.user_id || "?");
     const verifiedhtml = u.verified ? iconverified : "";
-    const syndhtml = t.syndicated ? '<span class="syndtag">not from the dataset</span>' : "";
+    const syndhtml = t.syndicated ? '<span class="syndtag">(not from the dataset)</span>' : "";
 
     const datestr = fmtdate(t.created_at);
     const datealt = (t.created_at || "").replace(/\s*\+0000\s*/, " ");
@@ -651,6 +654,7 @@ function rendertweet(t, opts) {
         wiren1aspect(m);
     }
     hydrateunresolvedtco(article);
+    emojify(article);
     return article;
 }
 
@@ -789,7 +793,7 @@ function renderquotedcard(q) {
         '<div class="qheader">' + avatarhtml +
         '<b>' + decodeandescape(u.display_name || u.username || "(unknown)") + '</b>' +
         '<span class="qhandle">' + escapehtml(handle) + '</span>' +
-        (q.syndicated ? '<span class="syndtag">not from the dataset</span>' : '') +
+        (q.syndicated ? '<span class="syndtag">(not from the dataset)</span>' : '') +
         '</div>' +
         '<div class="qtext">' + formattweettext(q) + '</div>' +
         mediahtml +
@@ -803,12 +807,13 @@ function rendermedia(media) {
     const inner = items.map(m => {
         const thumb = m.thumbnail || "";
         const small = smallimg(thumb);
-        // inline video, preload="none" until played, and gifs autoplay muted
+        // inline video: muted + playsinline so the observer can autoplay
+        // it in view (gifs loop and hide controls, like twitter)
         if ((m.type === "video" || m.type === "animated_gif") && m.video_url) {
             const isgif = m.type === "animated_gif";
             const attrs = isgif
-                ? 'autoplay loop muted playsinline preload="metadata"'
-                : 'controls preload="none" playsinline';
+                ? 'loop muted playsinline preload="metadata"'
+                : 'controls muted playsinline preload="metadata"';
             return '<div class="mediaitem video">' +
                 '<video ' + attrs + ' poster="' + escapeattr(small) + '" src="' + escapeattr(m.video_url) + '" onerror="window.onmediaerror(this)"></video>' +
                 '</div>';
@@ -947,6 +952,7 @@ function renderuser(u) {
         });
     }
     hydrateunresolvedtco(row);
+    emojify(row);
     return row;
 }
 
@@ -1067,7 +1073,16 @@ function imgwithname(url, name) {
 function smallimg(url) { return imgwithname(url, "small"); }
 function origimg(url)  { return imgwithname(url, "orig"); }
 
-// the x.com permalink for a tweet (falls back to /i/status when no handle)
+function emojify(el) {
+    if (el && window.twemoji) {
+        twemoji.parse(el, {
+            base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+            folder: "svg", ext: ".svg",
+        });
+    }
+}
+
+// the permalink
 function tweeturlfor(t) {
     const u = state.userbyid.get(t.user_id) || t.syndicateduser || {};
     return u.username
@@ -1382,6 +1397,7 @@ async function renderdetail(root, focal) {
     const focalel = root.querySelector(".focal");
     if (ancestors.length) focalel.classList.add("lineup");
     wirefocal(focalel, focal);
+    emojify(focalel);
 
     const replyentries = [];
     const seenthread = new Set();
@@ -1401,7 +1417,8 @@ async function renderdetail(root, focal) {
                 card.classList.add("threadcontinued", "lineup");
             }
             const next = replyentries[i + 1];
-            if (next && next.threaded && next.tweet.user_id === tweet.user_id) {
+            const nextir = next && next.tweet.in_reply_to;
+            if (next && next.threaded && nextir && nextir.status_id === tweet.id) {
                 card.classList.add("linedown");
             }
             wrap.appendChild(card);
@@ -1447,7 +1464,7 @@ function renderfocalhtml(t, quoted) {
     const dname = decodeandescape(u.display_name || u.username || "(unknown)");
     const handle = u.username ? "@" + u.username : "@" + (t.user_id || "?");
     const verifiedhtml = u.verified ? iconverified : "";
-    const syndhtml = t.syndicated ? '<span class="syndtag">not from the dataset</span>' : "";
+    const syndhtml = t.syndicated ? '<span class="syndtag">(not from the dataset)</span>' : "";
     const tweeturl = tweeturlfor(t);
 
     const {remainder} = stripleadingmentions(t);

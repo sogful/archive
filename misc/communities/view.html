@@ -38,6 +38,10 @@
         h1, h2, h3, p {margin: 0}
         :any-link {color: var(--accent); text-decoration: none}
         [hidden] {display: none !important}
+        img.emoji {
+            height: 1.1em; width: 1.1em; margin: 0 0.05em 0 0.1em;
+            vertical-align: -0.2em; display: inline-block;
+        }
 
         /*//////////////////////////////////////////////////////////////////////*/
 
@@ -182,7 +186,10 @@
         .row1 .handle, .row1 .dot, .row1 .date {color: var(--muted); font-size: 15px}
         .row1 .handlelink {text-decoration: none}
         .row1 .handlelink:hover {color: var(--text)}
-        .syndtag {color: #f55; font-size: 13px; opacity: 0.5; white-space: nowrap}
+        .syndtag {
+            color: #f55;
+            opacity: 0.45; white-space: nowrap
+        }
         
         .unresolvedtco {
             filter: grayscale(1); opacity: 0.6;
@@ -563,6 +570,7 @@
 
     </div>
 
+<script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <script type="module" src="view.js"></script>
 
 </body>
