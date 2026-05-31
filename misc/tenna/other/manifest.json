@@ -1,0 +1,731 @@
+{
+    "servers": [
+        {
+            "key": "tenna",
+            "name": "TV TIME 16+",
+            "icon": "other/pfp.webp",
+            "categories": [
+                {
+                    "name": "TV TIME 16+",
+                    "channels": [
+                        {
+                            "id": "1268258990194950236",
+                            "name": "Member Count: 7980",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1454604433265524870",
+                            "name": "server-is-16-plus",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅A WORD FROM OUR SPONSORS⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1393004172609327225",
+                            "name": "☆⌇sponsors・chat",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1393004277269532874",
+                            "name": "☆⌇Sponsors VC",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1393004340566032384",
+                            "name": "☆⌇gradient・colors",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1401090285123014747",
+                            "name": "☆⌇role・icons",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅ADMIN AREA⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1313936464693956670",
+                            "name": "ʚɞ⌇logs",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1322267587932983336",
+                            "name": "ʚɞ⌇confession・logs",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1334299623786811513",
+                            "name": "ʚɞ⌇admins-and-owners・chat",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1392668203246686278",
+                            "name": "☆⌇archivedpippins",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1456409655080255498",
+                            "name": "ʚɞ⌇applications",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1467257050659553436",
+                            "name": "ʚɞ⌇admin-tickets",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1492703775838830722",
+                            "name": "☆⌇qotw",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅IMPORTANT⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1200924791117451325",
+                            "name": "☆⌇guidelines",
+                            "pages": 1,
+                            "count": 5,
+                            "first": "1470909244013285448",
+                            "last": "1470912615046713394"
+                        },
+                        {
+                            "id": "1413854550896414720",
+                            "name": "☆⌇faq",
+                            "pages": 1,
+                            "count": 2,
+                            "first": "1452922524911272088",
+                            "last": "1452922613557891092"
+                        },
+                        {
+                            "id": "1346670608531984445",
+                            "name": "☆⌇mod・support",
+                            "pages": 1,
+                            "count": 1,
+                            "first": "1454699157385380054",
+                            "last": "1454699157385380054"
+                        },
+                        {
+                            "id": "1408571143291666573",
+                            "name": "☆⌇announcements",
+                            "pages": 1,
+                            "count": 1880,
+                            "first": "1408574063865237655",
+                            "last": "1497500823532470282"
+                        },
+                        {
+                            "id": "1400974911492591616",
+                            "name": "☆⌇commercial・break",
+                            "pages": 1,
+                            "count": 23,
+                            "first": "1400975181924667492",
+                            "last": "1485377919982239744"
+                        },
+                        {
+                            "id": "1435484492054794382",
+                            "name": "☆⌇mod・intros",
+                            "pages": 1,
+                            "count": 31,
+                            "first": "1435488296494174308",
+                            "last": "1473931090799624306"
+                        },
+                        {
+                            "id": "1453126576760946748",
+                            "name": "☆⌇staff-list",
+                            "pages": 1,
+                            "count": 2,
+                            "first": "1454213074130309192",
+                            "last": "1454213122197028907"
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅GREEN ROOM⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1275673016772067338",
+                            "name": "bunny",
+                            "pages": 128,
+                            "count": 2292441,
+                            "first": "1275673215859167352",
+                            "last": "1497546532906598540"
+                        },
+                        {
+                            "id": "1386118590985666620",
+                            "name": "☆⌇bunnywordle",
+                            "pages": 2,
+                            "count": 25352,
+                            "first": "1386119476847579248",
+                            "last": "1497471198248828948"
+                        },
+                        {
+                            "id": "1485672654731083997",
+                            "name": "☆⌇bunnydumping",
+                            "pages": 1,
+                            "count": 5083,
+                            "first": "1485673390915453182",
+                            "last": "1497542729062678609"
+                        },
+                        {
+                            "id": "1207728268325822534",
+                            "name": "☆⌇art",
+                            "pages": 3,
+                            "count": 48106,
+                            "first": "1207728304451489812",
+                            "last": "1497422917087264798"
+                        },
+                        {
+                            "id": "1399050689501724702",
+                            "name": "☆⌇art・2",
+                            "pages": 1,
+                            "count": 9184,
+                            "first": "1399050827070570620",
+                            "last": "1497389671653834883"
+                        },
+                        {
+                            "id": "1201349135601778738",
+                            "name": "☆⌇bots",
+                            "pages": 65,
+                            "count": 1158099,
+                            "first": "1204077023115485265",
+                            "last": "1497540962870886652"
+                        },
+                        {
+                            "id": "1469214126269141115",
+                            "name": "☆⌇bots・2",
+                            "pages": 2,
+                            "count": 26304,
+                            "first": "1469214902764965930",
+                            "last": "1497498947889926174"
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅MEDIA⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1208497258404778014",
+                            "name": "☆⌇counting",
+                            "pages": 2,
+                            "count": 32666,
+                            "first": "1210290809082224731",
+                            "last": "1497458536916062330"
+                        },
+                        {
+                            "id": "1322267627439001671",
+                            "name": "☆⌇confessions",
+                            "pages": 1,
+                            "count": 6299,
+                            "first": "1322268470871593075",
+                            "last": "1497431026455285860"
+                        },
+                        {
+                            "id": "1385760027247120404",
+                            "name": "☆⌇utdr",
+                            "pages": 2,
+                            "count": 19545,
+                            "first": "1385760073514483772",
+                            "last": "1497419337298874528"
+                        },
+                        {
+                            "id": "1386526212578344970",
+                            "name": "☆⌇fanfic・recs",
+                            "pages": 1,
+                            "count": 691,
+                            "first": "1386526651814379632",
+                            "last": "1497460152704434337"
+                        },
+                        {
+                            "id": "1394027309761036632",
+                            "name": "☆⌇music",
+                            "pages": 1,
+                            "count": 1047,
+                            "first": "1394027405861060719",
+                            "last": "1497432339519901727"
+                        },
+                        {
+                            "id": "1395924847762215074",
+                            "name": "☆⌇media",
+                            "pages": 1,
+                            "count": 2900,
+                            "first": "1395926143424528497",
+                            "last": "1497520491433562174"
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅SENSITIVE TOPICS⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1324251231845351474",
+                            "name": "☆⌇verify",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1388730423537958962",
+                            "name": "☆⌇Debate VC",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1391911603057987769",
+                            "name": "☆⌇ST VC",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1401097038233469031",
+                            "name": "☆⌇st・rouxls",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1452806006592638986",
+                            "name": "☆⌇civil・debate",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1456029625254936762",
+                            "name": "☆⌇st・general",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1461961753599410324",
+                            "name": "☆⌇sensitive・topics",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅SERVER⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1202007402308702308",
+                            "name": "☆⌇intros",
+                            "pages": 1,
+                            "count": 4870,
+                            "first": "1202039572037369956",
+                            "last": "1497419633735499850"
+                        },
+                        {
+                            "id": "1212440257539211285",
+                            "name": "☆⌇welcome",
+                            "pages": 2,
+                            "count": 21949,
+                            "first": "1212503022530330624",
+                            "last": "1497545169548083331"
+                        },
+                        {
+                            "id": "1212442052827287573",
+                            "name": "☆⌇sponsors",
+                            "pages": 1,
+                            "count": 812,
+                            "first": "1212759959289462905",
+                            "last": "1496207168003637320"
+                        },
+                        {
+                            "id": "1386486013341208586",
+                            "name": "☆⌇starboard",
+                            "pages": 1,
+                            "count": 5584,
+                            "first": "1386486046790909973",
+                            "last": "1497504128371392564"
+                        },
+                        {
+                            "id": "1388729194384588830",
+                            "name": "☆⌇bump",
+                            "pages": 1,
+                            "count": 5245,
+                            "first": "1388759930571460720",
+                            "last": "1497416859480232047"
+                        },
+                        {
+                            "id": "1422965349116153969",
+                            "name": "☆⌇random",
+                            "pages": 1,
+                            "count": 3808,
+                            "first": "1422965480251068581",
+                            "last": "1497345562889162823"
+                        },
+                        {
+                            "id": "1469342268518432941",
+                            "name": "☆⌇suggestions",
+                            "pages": 1,
+                            "count": 51,
+                            "first": "1471748480602210315",
+                            "last": "1497471596355649616"
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅STAFF AREA⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1303115763145769060",
+                            "name": "ʚɞ⌇automod",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1383253560375906337",
+                            "name": "ʚɞ⌇mod・rules",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1393328753421324390",
+                            "name": "mod vc",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1429887756515151913",
+                            "name": "ʚɞ⌇gasterlings-dsmp-furry-rp-venting",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1452500985590186114",
+                            "name": "ʚɞ⌇mod-furry-group-therapy",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1452945026471432222",
+                            "name": "bots-for-mods",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1454201920964264069",
+                            "name": "ticket-logs",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1461101936966373552",
+                            "name": "ʚɞ⌇trial-mod-chat",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1469872843301851222",
+                            "name": "chat-watching-chat",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497377514471948478",
+                            "name": "ticket-0035",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497406156556210217",
+                            "name": "closed-0010",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497421216598986873",
+                            "name": "ticket-0093",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497435439512948816",
+                            "name": "ticket-0004",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "─── ⋆⋅VC⋅⋆ ───",
+                    "channels": [
+                        {
+                            "id": "1439526201835393034",
+                            "name": "☆⌇VC",
+                            "pages": 1,
+                            "count": 1306,
+                            "first": "1441210619780137141",
+                            "last": "1497432381462806679"
+                        },
+                        {
+                            "id": "1439526773107851344",
+                            "name": "☆⌇VC 2",
+                            "pages": 1,
+                            "count": 7,
+                            "first": "1468008392470565136",
+                            "last": "1468008893702471875"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "antikervyn",
+            "name": "Anti-Kervyn Server",
+            "icon": "other/pfp2.webp",
+            "categories": [
+                {
+                    "name": "entry way",
+                    "channels": [
+                        {
+                            "id": "1497441110312878210",
+                            "name": "da-rules",
+                            "pages": 1,
+                            "count": 6,
+                            "first": "1497444207298613258",
+                            "last": "1497450459852701826"
+                        },
+                        {
+                            "id": "1497455165786030160",
+                            "name": "welcome",
+                            "pages": 1,
+                            "count": 50,
+                            "first": "1497515974838976544",
+                            "last": "1497659438780256420"
+                        },
+                        {
+                            "id": "1497455197503492136",
+                            "name": "verify",
+                            "pages": 1,
+                            "count": 33,
+                            "first": "1497511065070600284",
+                            "last": "1497659548096266351"
+                        },
+                        {
+                            "id": "1497455259621265468",
+                            "name": "roles",
+                            "pages": 1,
+                            "count": 3,
+                            "first": "1497550171750531124",
+                            "last": "1497649427056164894"
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "channels": [
+                        {
+                            "id": "1497518188689096804",
+                            "name": "modchat",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        }
+                    ]
+                },
+                {
+                    "name": "Text Channels",
+                    "channels": [
+                        {
+                            "id": "1497376690945523913",
+                            "name": "general",
+                            "pages": 1,
+                            "count": 36,
+                            "first": "1497377129816526858",
+                            "last": "1497414758066950225"
+                        },
+                        {
+                            "id": "1497376690945523914",
+                            "name": "clips-and-highlights",
+                            "pages": 1,
+                            "count": 16,
+                            "first": "1497469943329984584",
+                            "last": "1497559561337438329"
+                        },
+                        {
+                            "id": "1497419745455112295",
+                            "name": "casserole-boo",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497420598576418917",
+                            "name": "amory-we-love-amory-i-love-amory",
+                            "pages": 1,
+                            "count": 7,
+                            "first": "1497420670903255040",
+                            "last": "1497421822659002489"
+                        },
+                        {
+                            "id": "1497420907038380213",
+                            "name": "we-love-arin-se-we-do-we-love-arin-how-bout-you",
+                            "pages": 1,
+                            "count": 2,
+                            "first": "1497420973127897149",
+                            "last": "1497422275497033809"
+                        },
+                        {
+                            "id": "1497421317467541596",
+                            "name": "tay-is-cute-tay-is-fun-tay-is-funny-she-does-not-have-a-gun",
+                            "pages": 1,
+                            "count": 5,
+                            "first": "1497421727804686417",
+                            "last": "1497425081486413925"
+                        },
+                        {
+                            "id": "1497423360777519184",
+                            "name": "terraria-room",
+                            "pages": 1,
+                            "count": 3,
+                            "first": "1497423386727415808",
+                            "last": "1497423779146498188"
+                        },
+                        {
+                            "id": "1497424805924831253",
+                            "name": "bassie-garden-or-smth-idk",
+                            "pages": 1,
+                            "count": 6,
+                            "first": "1497424844730400879",
+                            "last": "1497425826948452374"
+                        },
+                        {
+                            "id": "1497424809037004800",
+                            "name": "we-love-casserole",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497425609079521421",
+                            "name": "dw-chat-or-smth",
+                            "pages": 1,
+                            "count": 3,
+                            "first": "1497552809078427701",
+                            "last": "1497552822604922981"
+                        },
+                        {
+                            "id": "1497437878110785706",
+                            "name": "bendy-bendy-ink-machesnnenr-lemon-demon-sayorisprite-skittle-seal",
+                            "pages": 1,
+                            "count": 14,
+                            "first": "1497437916954365962",
+                            "last": "1497450702065111160"
+                        },
+                        {
+                            "id": "1497439890391040111",
+                            "name": "bullshit",
+                            "pages": 0,
+                            "count": 0,
+                            "first": null,
+                            "last": null
+                        },
+                        {
+                            "id": "1497470345899278357",
+                            "name": "raylbh03",
+                            "pages": 1,
+                            "count": 25,
+                            "first": "1497470385753559110",
+                            "last": "1497473493455998987"
+                        },
+                        {
+                            "id": "1497474583266066576",
+                            "name": "ninja-monkey-shrine",
+                            "pages": 1,
+                            "count": 11,
+                            "first": "1497474598453903410",
+                            "last": "1497523924207144974"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

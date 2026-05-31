@@ -1,0 +1,218 @@
+@font-face {
+    src: url("../../assets/fonts/ggsans.ttf");
+    font-family: gg sans; font-weight: 400;
+}
+@font-face {
+    src: url("../../assets/fonts/ggsansmedium.ttf");
+    font-family: gg sans; font-weight: 500;
+}
+@font-face {
+    src: url("../../assets/fonts/ggsanssemibold.ttf");
+    font-family: gg sans; font-weight: 600;
+}
+@font-face {
+    src: url("../../assets/fonts/ggsansbold.ttf");
+    font-family: gg sans; font-weight: 700;
+}
+
+.chatlog {padding: 0.5rem 0; width: 100%}
+.chatlogmessage-group {margin-bottom: 1.1rem}
+.chatlogmessage-container {
+    background-color: transparent;
+    transition: background-color 1s ease; scroll-margin-top: 80px;
+}
+.chatlogmessagecontainerhighlighted {background-color: rgba(88,101,242,0.18)}
+.chatlogmessage {
+    display: grid; grid-template-columns: auto 1fr;
+    padding: 0.1rem 0.5rem 0.1rem 0;
+}
+.chatlogmessage:hover {background-color: #2e3035}
+.chatlogmessage:hover .chatlogshort-timestamp {visibility: visible}
+.chatlogmessage-aside {
+    grid-column: 1; width: 72px;
+    padding: 0.15rem 0.15rem 0 0.15rem; 
+    text-align: center;
+}
+.chatlogavatar {width: 40px; height: 40px; border-radius: 50%}
+.chatlogshort-timestamp {
+    visibility: hidden;
+    color: #949ba4; font-size: 0.7rem; font-weight: 500;
+}
+.chatlogmessage-primary {grid-column: 2; min-width: 0}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.chatlogreply {
+    display: grid; grid-template-columns: 72px 1fr;
+    align-items: flex-end; cursor: pointer;
+    margin-bottom: 0.1rem;
+    color: #b5bac1; font-size: 0.875rem;
+}
+.chatlogreply-symbol {
+    grid-column: 1; justify-self: end;
+    width: 30px; height: 11px; margin: 0 4px -1px 0;
+    border-left: 2px solid #4e5058; 
+    border-top: 2px solid #4e5058;
+    border-radius: 8px 0 0 0;
+}
+.chatlogreply-body {
+    grid-column: 2; min-width: 0;
+    display: flex; align-items: center;
+    white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chatlogreply-avatar {
+    width: 16px; height: 16px; flex-shrink: 0;
+    margin-right: 0.25rem; border-radius: 50%;
+}
+.chatlogreply-author {
+    margin-right: 0.3rem; flex-shrink: 0;
+    font-weight: 600; color: #dbdee1;
+}
+.chatlogreply-content {overflow: hidden; text-overflow: ellipsis}
+.chatlogreply:hover .chatlogreply-content {color: #fff}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.chatlogheader {margin-bottom: 0.1rem}
+.chatlogauthor {font-weight: 500; color: #f2f3f5; cursor: default}
+.chatlogauthor-tag {
+    position: relative; top: -0.1rem;
+    margin-left: 0.3rem; padding: 0.05rem 0.3rem;
+    border-radius: 3px; background-color: #5865f2;
+    color: #fff; font-size: 0.625rem; font-weight: 500; line-height: 1.3;
+}
+.chatlogtimestamp {
+    margin-left: 0.3rem;
+    color: #949ba4; font-size: 0.75rem; font-weight: 500;
+}
+.chatlogcontent {
+    padding-right: 1rem; min-width: 0;
+    font-size: 0.95rem; line-height: 1.3;
+    white-space: pre-wrap; word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+.chatlogcontent h1, .chatlogcontent h2, .chatlogcontent h3 {
+    margin: 0.3rem 0 0.1rem; line-height: 1.3; font-weight: 700;
+}
+.chatlogcontent h1 {font-size: 1.4rem}
+.chatlogcontent h2 {font-size: 1.2rem}
+.chatlogcontent h3 {font-size: 1rem}
+.chatlogcontent h1:first-child,
+.chatlogcontent h2:first-child,
+.chatlogcontent h3:first-child {margin-top: 0}
+.sub {font-size: 0.75em; opacity: 0.5}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.chatlogattachment {
+    position: relative; width: fit-content;
+    margin-top: 0.3rem; border-radius: 3px; overflow: hidden;
+}
+.chatlogattachment-media {
+    max-width: min(45vw,400px); max-height: 340px;
+    vertical-align: top; border-radius: 3px;
+}
+.chatlogattachment-generic {
+    display: flex; align-items: center;
+    max-width: 430px; padding: 10px;
+    border: 1px solid #1e1f22; border-radius: 3px;
+    background-color: #2b2d31;
+}
+.chatlogattachment-generic-name {
+    overflow: hidden;
+    white-space: nowrap; text-overflow: ellipsis;
+}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.chatlogembed {display: flex; margin-top: 0.3rem; max-width: 520px; min-width: 0}
+.chatlogembed-color-pill {
+    flex-shrink: 0; width: 0.25rem;
+    border-radius: 3px 0 0 3px; background-color: #1e1f22;
+}
+.chatlogembed-content-container {
+    display: flex; flex-direction: column; min-width: 0;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid rgba(0,0,0,0.3); border-radius: 0 3px 3px 0;
+    background-color: #2b2d31;
+}
+.chatlogembed-author {
+    margin-bottom: 0.4rem;
+    color: #fff; font-size: 0.875rem; font-weight: 600;
+}
+.chatlogembed-title {
+    margin-bottom: 0.4rem;
+    color: #fff; font-size: 0.9rem; font-weight: 600;
+}
+.chatlogembed-description {
+    color: #dbdee1; font-weight: 500;
+    font-size: 0.85rem; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.chatlogembed-field {padding-top: 0.5rem; font-size: 0.85rem}
+.chatlogembed-field-name {
+    margin-bottom: 0.2rem;
+    color: #fff; font-weight: 600;
+}
+.chatlogembed-field-value {color: #dbdee1; font-weight: 500; white-space: pre-wrap; overflow-wrap: anywhere}
+.chatlogembed-image {
+    max-width: 100%; max-height: 300px;
+    margin-top: 0.5rem; border-radius: 3px;
+}
+.chatlogembed-thumbnail {
+    max-width: 80px; max-height: 80px;
+    margin-left: 1rem; border-radius: 3px;
+}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.chatlogsticker {width: 160px; height: 160px; margin-top: 0.3rem}
+.chatlogsticker img {max-width: 100%; max-height: 100%}
+.chatlogreactions {display: flex; flex-wrap: wrap}
+.chatlogreaction {
+    display: flex; align-items: center;
+    margin: 0.35rem 0.2rem 0.1rem 0; padding: 0.125rem 0.4rem;
+    border: 1px solid transparent; border-radius: 8px;
+    background-color: #2b2d31;
+}
+.chatlogreaction-emoji {font-size: 1.05rem; line-height: 1}
+img.chatlogreaction-emoji {width: 1.3rem; height: 1.3rem; object-fit: contain}
+.chatlogreaction-count {
+    min-width: 9px; margin-left: 0.35rem;
+    color: #b5bac1; font-size: 0.85rem;
+}
+
+/*//////////////////////////////////////////////////////////////////////*/
+
+.e {
+    width: 1.325rem; height: 1.325rem;
+    margin: 0 0.06rem; vertical-align: -0.4rem;
+}
+.m {
+    padding: 0 2px; border-radius: 3px;
+    background-color: rgba(88,101,242,.3);
+    color: #c9cdfb; font-weight: 500;
+}
+.s {
+    padding: 0 2px; border-radius: 3px;
+    background-color: #1e1f22; cursor: pointer; transition: color .1s;
+}
+.s:not(.revealed) {color: rgba(0,0,0,0)}
+.s:not(.revealed) * {visibility: hidden}
+.q {
+    display: block; margin: 0.05rem 0;
+    padding-left: 0.5rem; border-left: 3px solid #4e5058;
+}
+.chatlogcontent a {color: #00a8fc; overflow-wrap: anywhere}
+.chatlogcontent code {
+    padding: 1px 3px; border-radius: 3px;
+    background-color: #2b2d31; font-size: 0.85rem;
+    font-family: Consolas, "Courier New", monospace;
+}
+.chatlogcontent pre {
+    padding: 0.5rem; border-radius: 5px;
+    border: 1px solid #1e1f22; background-color: #2b2d31;
+    color: #b5bac1; font-size: 0.85rem;
+    white-space: pre-wrap; overflow-wrap: anywhere;
+    font-family: Consolas, "Courier New", monospace;
+}

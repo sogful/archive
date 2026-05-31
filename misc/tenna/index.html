@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset=utf-8>
+    <title>TV TIME archive</title>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel=icon href="other/pfp.webp">
+    <link rel=stylesheet href="chatlog.css">
+    <style>
+
+        :root {
+            --rail: #1e1f22; --sidebar: #2b2d31;
+            --chat: #313338; --inset: #1e1f22;
+            --hover: #35373c; --active: #404249;
+            --txt: #dbdee1; --muted: #949ba4;
+            --head: #f2f3f5; --accent: #5865f2;
+            --chanico: #80848e;
+        }
+        * {box-sizing: border-box}
+        html, body {
+            margin: 0; height: 100%; overflow: hidden;
+            background: var(--chat); color: var(--txt);
+            font-family: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        a {color: #00a8fc; text-decoration: none}
+        a:hover {text-decoration: underline}
+        img {object-fit: contain}
+
+        .app {display: flex; height: 100%}
+
+        /*//////////////////////////////////////////////////////////////////////*/
+
+        .rail {
+            width: 72px; flex-shrink: 0;
+            background: var(--rail); padding: 12px 0;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 8px; overflow-y: auto;
+        }
+        .railicon {
+            width: 48px; height: 48px;
+            border-radius: 50%; overflow: hidden;
+            background: var(--sidebar); cursor: pointer;
+            transition: border-radius .15s;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 600; font-size: 0.95rem;
+            position: relative;
+        }
+        .railicon img {width: 100%; height: 100%}
+        .railicon:hover, .railicon.active {border-radius: 32%}
+        .railicon.active::before {
+            content: ""; position: absolute;
+            left: -12px; top: 50%; transform: translateY(-50%);
+            width: 4px; height: 36px;
+            border-radius: 0 4px 4px 0; background: #fff;
+        }
+
+        /*//////////////////////////////////////////////////////////////////////*/
+
+        .sidebar {
+            width: 248px; flex-shrink: 0;
+            background: var(--sidebar);
+            display: flex; flex-direction: column;
+        }
+        .guildname {
+            padding: 14px 16px; font-weight: 600;
+            color: var(--head); font-size: 1rem;
+            border-bottom: 1px solid #1f2023;
+            box-shadow: 0 1px 0 rgba(0,0,0,.2);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .channels {flex: 1; overflow-y: auto; padding: 8px 8px 40px}
+        .cat {margin-top: 14px}
+        .catname {
+            padding: 4px 8px; cursor: pointer;
+            color: var(--muted); font-size: 0.72rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .cat.collapsed .catlist {display: none}
+        .chan {
+            display: flex; align-items: center; gap: 6px;
+            padding: 6px 8px; margin: 1px 0; border-radius: 4px;
+            color: var(--muted); cursor: pointer; font-size: 0.95rem;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .chan:hover {background: var(--hover); color: var(--txt)}
+        .chan.active {background: var(--active); color: #fff}
+        .chanhash {
+            display: inline-flex; align-items: center;
+            color: var(--chanico); flex-shrink: 0;
+        }
+        .chanhash svg {width: 18px; height: 18px}
+        .chan:hover .chanhash {color: var(--txt)}
+        .chan.active .chanhash {color: #fff}
+        .chancount {
+            margin-left: auto; flex-shrink: 0;
+            font-size: 0.7rem; color: #5d6066;
+        }
+
+        /*//////////////////////////////////////////////////////////////////////*/
+        .main {
+            flex: 1; min-width: 0; position: relative;
+            display: flex; flex-direction: column; background: var(--chat);
+        }
+        .topbar {
+            height: 48px; flex-shrink: 0;
+            display: flex; align-items: center; gap: 10px; padding: 0 16px;
+            border-bottom: 1px solid #1f2023;
+            box-shadow: 0 1px 0 rgba(0,0,0,.2);
+        }
+        .chantitle {
+            display: flex; align-items: center; gap: 6px;
+            font-weight: 600; color: var(--head);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .chantitle .chanhash svg {width: 20px; height: 20px}
+        .chanid {
+            margin-left: 6px; opacity: 0.5;
+            font-weight: 500; font-size: 0.8rem;
+        }
+        .searchwrap {
+            margin-left: auto; position: relative;
+            width: 240px; transition: width .15s;
+        }
+        .searchwrap:focus-within {width: 320px}
+        .search {
+            width: 100%; padding: 6px 32px 6px 10px;
+            border: none; border-radius: 4px;
+            background: var(--inset); color: var(--txt);
+            font-size: 0.85rem; font-family: inherit;
+        }
+        .search::placeholder {font-family: inherit; color: var(--muted)}
+        .search:focus {outline: none}
+        .searchicon {
+            position: absolute; right: 8px; top: 50%;
+            transform: translateY(-50%);
+            display: flex; color: var(--muted);
+        }
+        .searchicon svg {width: 18px; height: 18px}
+        .searchwrap.hastext .searchicon {cursor: pointer; color: var(--txt)}
+
+        .messages {flex: 1; overflow-y: auto; overflow-x: hidden; position: relative}
+        img.emoji {
+            width: 1.375em; height: 1.375em;
+            margin: 0 .05em 0 .1em; vertical-align: -0.25em;
+        }
+
+        /* "viewing older messages" jump bar */
+        .olderbar {
+            position: absolute; left: 0; right: 0; top: 48px; z-index: 15;
+            display: none; align-items: center; justify-content: space-between;
+            height: 27px; padding: 0 16px;
+            background: var(--accent); color: #fff;
+            font-size: 0.8rem; font-weight: 500;
+        }
+        .olderbar.show {display: flex}
+        .olderbar .jumppresent {
+            display: flex; align-items: center; gap: 4px;
+            cursor: pointer; font-weight: 600;
+        }
+        .olderbar .jumppresent:hover {text-decoration: underline}
+
+        /* locked / empty channel screen */
+        .lockscreen {
+            display: flex; height: 100%;
+            flex-direction: column; gap: 10px;
+            align-items: center; justify-content: center;
+            color: #b5bac1; text-align: center; padding: 24px;
+        }
+        .lockscreen .lockicon {width: 138px; height: auto; margin-bottom: 8px}
+        .lockscreen h2 {
+            margin: 0; color: var(--head);
+            font-size: 1.65rem; font-weight: 700; max-width: 440px;
+        }
+        .lockscreen p {margin: 0; max-width: 440px; font-size: 1rem; line-height: 1.4}
+        .daydivider {
+            display: flex; align-items: center; margin: 1rem;
+            color: var(--muted); font-size: 0.75rem; font-weight: 600;
+        }
+        .daydivider::before, .daydivider::after {
+            content: ""; flex: 1;
+            height: 1px; background: rgba(255,255,255,.08);
+        }
+        .daydivider span {padding: 0 .6rem}
+        .placeholder {
+            display: flex; height: 100%;
+            align-items: center; justify-content: center;
+            flex-direction: column; gap: 8px;
+            color: var(--muted); text-align: center;
+        }
+
+        /*//////////////////////////////////////////////////////////////////////*/
+
+        .searchpanel {
+            position: absolute; top: 48px; right: 0; bottom: 0;
+            width: 420px; max-width: 90vw;
+            background: var(--sidebar); border-left: 1px solid var(--inset);
+            display: flex; flex-direction: column;
+            z-index: 20; box-shadow: -4px 0 12px rgba(0,0,0,.3);
+        }
+        .searchhead {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 14px; font-size: 0.85rem;
+            border-bottom: 1px solid var(--inset);
+        }
+        .searchhead b {color: var(--head)}
+        .searchclose {
+            margin-left: auto; cursor: pointer;
+            color: var(--muted); font-size: 1.1rem;
+        }
+        .searchprog {height: 3px; background: var(--inset)}
+        .searchprog > div {
+            height: 100%; width: 0;
+            background: var(--accent); transition: width .2s;
+        }
+        .results {flex: 1; overflow-y: auto; padding: 8px}
+        .result {
+            padding: 8px 10px; margin: 6px 0; border-radius: 6px;
+            background: var(--chat); cursor: pointer; font-size: 0.85rem;
+        }
+        .result:hover {background: var(--hover)}
+        .reschanhead {
+            display: flex; align-items: center; gap: 4px;
+            margin: 12px 4px 2px; padding-bottom: 4px;
+            color: var(--head); font-weight: 600; font-size: 0.8rem;
+        }
+        .reschanhead .chanhash {color: var(--chanico)}
+        .resultmsg {display: flex; gap: 8px}
+        .resultav {
+            width: 32px; height: 32px;
+            border-radius: 50%; flex-shrink: 0;
+        }
+        .resultbody {min-width: 0}
+        .resultline {display: flex; align-items: baseline; gap: 6px}
+        .resultauthor {color: var(--head); font-weight: 600}
+        .resulttime {color: var(--muted); font-size: 0.7rem}
+        .resulttext {
+            margin-top: 1px;
+            color: var(--txt); line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+        .result mark {
+            background: #6f5b37; color: #fff;
+            border-radius: 2px; padding: 0 1px;
+        }
+
+        ::-webkit-scrollbar {width: 5px; height: 5px}
+        ::-webkit-scrollbar-thumb {background: #767780; border-radius: 6px}
+        ::-webkit-scrollbar-track {background: transparent}
+        ::-webkit-scrollbar-button {display: none; width: 0; height: 0}
+        * {scrollbar-width: thin; scrollbar-color: #767780 transparent}
+    </style>
+</head>
+<body>
+
+    <div class="app">
+    <div class="rail"></div>
+    <div class="sidebar">
+        <div class="guildname">loading...</div>
+        <div class="channels"></div>
+    </div>
+    <div class="main">
+        <div class="topbar">
+        <div class="chantitle"></div>
+        <div class="searchwrap">
+            <input class="search" type="text" placeholder="Search..." autocomplete="off">
+            <span class="searchicon"></span>
+        </div>
+        </div>
+        <div class="olderbar">
+        <span>Viewing Older Messages</span>
+        <span class="jumppresent">Jump To Present &#8595;</span>
+        </div>
+        <div class="messages"></div>
+    </div>
+    </div>
+    <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <script src="viewer.js"></script>
+
+</body>
+</html>
