@@ -1,0 +1,11 @@
+# media is kept local-only for now (~2.6gb, and two videos exceed github's
+# 100mb hard per-file limit, so it cannot be committed as-is). the viewer
+# references these by relative path, so it works when run locally; on a plain
+# github pages deploy the media just shows the "media removed" placeholder.
+#
+# to host later: upload these folders somewhere (github releases / r2 / a cdn)
+# and prepend that base url to the media paths. build scripts: .claude/scripts.
+
+*/avatars/
+*/banners/
+*/media/

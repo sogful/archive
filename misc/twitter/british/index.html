@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>tommyinnit archive</title>
+    <link rel="icon" type="image/png" href="https://abs.twimg.com/favicons/twitter.ico">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="googlebot" content="index,follow">
+    <meta name="google" content="notranslate">
+    <meta name="referrer" content="no-referrer">
+
+    <style>
+        @font-face {font-family: "Chirp"; src: url("../../assets/fonts/chirp.woff2");      font-weight: 400}
+        @font-face {font-family: "Chirp"; src: url("../../assets/fonts/chirpbold.woff2");  font-weight: 700}
+        @font-face {font-family: "Chirp"; src: url("../../assets/fonts/chirpheavy.woff2"); font-weight: 900}
+
+        :root {
+            --bg: #000;
+            --surface: #16181c;
+            --border: #2f3336;
+            --text: #e7e9ea;
+            --muted: #71767b;
+            --accent: #1d9bf0;
+        }
+        html, body {scrollbar-width: none}
+        html::-webkit-scrollbar, body::-webkit-scrollbar {display: none}
+        body {
+            background: var(--bg); color: var(--text);
+            font-family: "Chirp", -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+            margin: 0; padding: 32px 24px;
+            min-height: 100vh; box-sizing: border-box;
+            text-rendering: optimizeLegibility;
+        }
+        h1, h2, h3, p {margin: 0}
+        a {color: var(--text); text-decoration: none}
+        img.emoji {height: 1.05em; width: 1.05em; margin: 0 0.05em; vertical-align: -0.18em}
+
+        /*//////////////////////////////////////////////////////////////////////*/
+
+        .wrap {max-width: 720px; margin: 0 auto}
+        h1 {font-size: 1.4em; margin-bottom: 0.2em; letter-spacing: -0.2px}
+        .blurb {color: var(--muted); font-size: 14px; margin-bottom: 1.4em; line-height: 1.45}
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        @media (max-width: 620px) {
+            .grid {grid-template-columns: 1fr}
+            .wrap {max-width: 420px}
+        }
+
+        /*//////////////////////////////////////////////////////////////////////*/
+
+        .card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+        .banner {display: block; width: 100%; aspect-ratio: 3 / 1; object-fit: cover; background: #15181c}
+        .bannerLink {display: block}
+        .info {padding: 0 16px 14px; position: relative}
+        .avatarwrap {
+            position: absolute; top: -28px; left: 16px;
+            width: 60px; height: 60px; border-radius: 50%;
+            border: 3px solid var(--bg); background: var(--surface);
+            overflow: hidden;
+        }
+        .avatarwrap img {width: 100%; height: 100%; object-fit: cover; display: block}
+        .namewrap {padding-top: 38px}
+        .name {
+            font-weight: 800; font-size: 19px;
+            letter-spacing: -0.2px; line-height: 1.2;
+            display: inline-flex; align-items: center; gap: 3px;
+        }
+        .name a:hover {text-decoration: underline}
+        .check {width: 18px; height: 18px}
+        .handle {color: var(--muted); font-size: 14px}
+        .desc {
+            margin: 0.5em 0 0; font-size: 14px; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+        }
+        .stats {margin: 0.6em 0 0.7em; font-size: 12px; color: var(--muted)}
+        .stats b {color: var(--text); font-weight: 700}
+
+        .files {margin: 0; display: flex; flex-wrap: wrap; gap: 0.35em}
+        .files a {
+            display: inline-block;
+            padding: 0.3em 0.65em; border-radius: 999px;
+            border: 1px solid #536471;
+            color: var(--text); font-size: 0.82em;
+        }
+        .files a:hover {background: rgba(239, 243, 244, 0.1)}
+        .files a.primary {background: #1d9bf0; color: var(--text); font-weight: 600}
+        .files a.primary:hover {background: #177cc0}
+        .files a small {opacity: 0.55; margin-left: 0.35em; font-size: 0.9em}
+
+        .status {color: var(--muted); font-size: 14px}
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+
+        <div class="grid"></div>
+        <div class="status">loading...</div>
+
+    </div>
+
+<script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+"use strict";
+
+const check = '<svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg>';
+
+function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+        ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+}
+function shortnum(n) {
+    n = +n || 0;
+    if (n < 1000) return String(n);
+    if (n < 1e6) return (n/1000).toFixed(n < 1e4 ? 1 : 0).replace(".0","") + "K";
+    return (n/1e6).toFixed(1).replace(".0","") + "M";
+}
+
+function card(p) {
+    const link = "view.html?profile=" + encodeURIComponent(p.folder);
+    const banner = p.banner
+        ? '<img class="banner" src="' + esc(p.banner) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">'
+        : '<div class="banner"></div>';
+    const avatar = p.avatar
+        ? '<img src="' + esc(p.avatar) + '" loading="lazy" referrerpolicy="no-referrer">'
+        : "";
+    const desc = p.bio ? '<p class="desc">' + esc(p.bio) + '</p>' : "";
+    return '' +
+        '<section class="card">' +
+        '<a class="bannerLink" href="' + link + '">' + banner + '</a>' +
+        '<div class="info">' +
+        '<div class="avatarwrap">' + avatar + '</div>' +
+        '<div class="namewrap">' +
+        '<h2 class="name"><a href="' + link + '">' + esc(p.name) + '</a>' + (p.verified ? check : "") + '</h2>' +
+        '<div class="handle">@' + esc(p.handle) + '</div>' +
+        '</div>' +
+        desc +
+        '<p class="stats"><b>' + shortnum(p.followers) + '</b> followers &middot; <b>' +
+            (p.archived_tweets || 0).toLocaleString("en-US") + '</b> archived tweets</p>' +
+        '<p class="files">' +
+        '<a class="primary" href="' + link + '">browse!</a>' +
+        '<a href="' + encodeURIComponent(p.folder) + '/users.json" download>users<small>' + esc(p.users_size || "") + '</small></a>' +
+        '<a href="' + encodeURIComponent(p.folder) + '/tweets.json" download>tweets<small>' + esc(p.tweets_size || "") + '</small></a>' +
+        '</p>' +
+        '</div>' +
+        '</section>';
+}
+
+(async () => {
+    const grid = document.querySelector(".grid");
+    const status = document.querySelector(".status");
+    try {
+        const r = await fetch("profiles.json");
+        if (!r.ok) throw new Error("profiles.json HTTP " + r.status);
+        const data = await r.json();
+        const list = data.profiles || [];
+        grid.innerHTML = list.map(card).join("");
+        status.remove();
+        if (window.twemoji) twemoji.parse(grid, {
+            base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+            folder: "svg", ext: ".svg",
+        });
+    } catch (e) {
+        status.className = "status";
+        status.textContent = "failed to load: " + e.message;
+    }
+})();
+</script>
+
+</body>
+</html>
