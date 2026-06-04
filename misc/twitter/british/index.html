@@ -61,7 +61,7 @@
             display: flex; flex-direction: column;
         }
         .banner {display: block; width: 100%; aspect-ratio: 3 / 1; object-fit: cover; background: #15181c}
-        .bannerLink {display: block}
+        .bannerlink {display: block}
         .info {padding: 0 16px 14px; position: relative}
         .avatarwrap {
             position: absolute; top: -28px; left: 16px;
@@ -98,102 +98,83 @@
         .files a.primary {background: #1d9bf0; color: var(--text); font-weight: 600}
         .files a.primary:hover {background: #177cc0}
         .files a small {opacity: 0.55; margin-left: 0.35em; font-size: 0.9em}
-
-        .status {color: var(--muted); font-size: 14px}
     </style>
 </head>
 <body>
 
     <div class="wrap">
 
-        <div class="grid"></div>
-        <div class="status">loading...</div>
+        <div class="grid">
+      <section class="card">
+        <a class="bannerlink" href="view?profile=tommyinnit"><img class="banner" src="https://github.com/sogful/archive/releases/download/media-tommyinnit-banners/1032978119370723329.jpg" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></a>
+        <div class="info">
+          <div class="avatarwrap"><img src="https://github.com/sogful/archive/releases/download/media-tommyinnit-avatars/1032978119370723329.jpg" loading="lazy" referrerpolicy="no-referrer"></div>
+          <div class="namewrap">
+            <h2 class="name"><a href="view?profile=tommyinnit">TommyInnit</a><svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg></h2>
+            <div class="handle">@tommyinnit</div>
+          </div>
+          <p class="desc">Really happy youtuber - @shutup1mtalking</p>
+          <p class="stats"><b>4.2M</b> followers &middot; <b>7,778</b> tweets</p>
+          <p class="files">
+            <a class="primary" href="view?profile=tommyinnit">browse!</a>
+            <a href="tommyinnit/users.json" download>users<small>213.5kb</small></a>
+            <a href="tommyinnit/tweets.json" download>tweets<small>6.19mb</small></a>
+          </p>
+        </div>
+      </section>
+      <section class="card">
+        <a class="bannerlink" href="view?profile=tommyaltinnit"><img class="banner" src="https://github.com/sogful/archive/releases/download/media-tommyaltinnit-banners/1373748437309653004.jpg" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></a>
+        <div class="info">
+          <div class="avatarwrap"><img src="https://github.com/sogful/archive/releases/download/media-tommyaltinnit-avatars/1373748437309653004.jpg" loading="lazy" referrerpolicy="no-referrer"></div>
+          <div class="namewrap">
+            <h2 class="name"><a href="view?profile=tommyaltinnit">tommyinnit</a><svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg></h2>
+            <div class="handle">@tommyaltinnit</div>
+          </div>
+          <p class="desc">helllooo</p>
+          <p class="stats"><b>2.1M</b> followers &middot; <b>750</b> tweets</p>
+          <p class="files">
+            <a class="primary" href="view?profile=tommyaltinnit">browse!</a>
+            <a href="tommyaltinnit/users.json" download>users<small>56.6kb</small></a>
+            <a href="tommyaltinnit/tweets.json" download>tweets<small>449.2kb</small></a>
+          </p>
+        </div>
+      </section>
+      <section class="card">
+        <a class="bannerlink" href="view?profile=tomsimons"><div class="banner"></div></a>
+        <div class="info">
+          <div class="avatarwrap"><img src="https://github.com/sogful/archive/releases/download/media-tomsimons-avatars/1379779219065028612.jpg" loading="lazy" referrerpolicy="no-referrer"></div>
+          <div class="namewrap">
+            <h2 class="name"><a href="view?profile=tomsimons">Tom Simons</a><svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg></h2>
+            <div class="handle">@tomsimons</div>
+          </div>
+          <p class="stats"><b>1.3M</b> followers &middot; <b>127</b> tweets</p>
+          <p class="files">
+            <a class="primary" href="view?profile=tomsimons">browse!</a>
+            <a href="tomsimons/users.json" download>users<small>6.7kb</small></a>
+            <a href="tomsimons/tweets.json" download>tweets<small>77.3kb</small></a>
+          </p>
+        </div>
+      </section>
+      <section class="card">
+        <a class="bannerlink" href="view?profile=shutup1mtalking"><img class="banner" src="https://github.com/sogful/archive/releases/download/media-shutup1mtalking-banners/1825493327174639616.jpg" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></a>
+        <div class="info">
+          <div class="avatarwrap"><img src="https://github.com/sogful/archive/releases/download/media-shutup1mtalking-avatars/1825493327174639616.jpg" loading="lazy" referrerpolicy="no-referrer"></div>
+          <div class="namewrap">
+            <h2 class="name"><a href="view?profile=shutup1mtalking">Shut Up I&#39;m Talking</a></h2>
+            <div class="handle">@shutup1mtalking</div>
+          </div>
+          <p class="desc">tom and jack vs real life ~ new podcast episodes every sunday</p>
+          <p class="stats"><b>27K</b> followers &middot; <b>37</b> tweets</p>
+          <p class="files">
+            <a class="primary" href="view?profile=shutup1mtalking">browse!</a>
+            <a href="shutup1mtalking/users.json" download>users<small>1.3kb</small></a>
+            <a href="shutup1mtalking/tweets.json" download>tweets<small>17.0kb</small></a>
+          </p>
+        </div>
+      </section>
+        </div>
 
     </div>
-
-<script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
-<script>
-
-    "use strict";
-
-    const check = '<svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg>';
-
-    // uses github releases this time #swag
-    const MEDIA = {owner: "sogful", repo: "archive"};
-    function usereleases() {
-        return !!(MEDIA && MEDIA.owner && MEDIA.repo);
-    }
-    function mediaurl(p) {
-        if (!p || p.startsWith("http") || !usereleases()) return p || "";
-        const parts = p.split("/");
-        if (parts.length < 3) return p;
-        const handle = parts[0], cat = parts[parts.length - 2], file = parts[parts.length - 1];
-        return "https://github.com/" + MEDIA.owner + "/" + MEDIA.repo +
-            "/releases/download/media-" + handle + "-" + cat + "/" + file;
-    }
-
-    function esc(s) {
-        return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
-            ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
-    }
-    function shortnum(n) {
-        n = +n || 0;
-        if (n < 1000) return String(n);
-        if (n < 1e6) return (n/1000).toFixed(n < 1e4 ? 1 : 0).replace(".0","") + "K";
-        return (n/1e6).toFixed(1).replace(".0","") + "M";
-    }
-
-    function card(p) {
-        const link = "view?profile=" + encodeURIComponent(p.folder);
-        const banner = p.banner
-            ? '<img class="banner" src="' + esc(mediaurl(p.banner)) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">'
-            : '<div class="banner"></div>';
-        const avatar = p.avatar
-            ? '<img src="' + esc(mediaurl(p.avatar)) + '" loading="lazy" referrerpolicy="no-referrer">'
-            : "";
-        const desc = p.bio ? '<p class="desc">' + esc(p.bio) + '</p>' : "";
-        return '' +
-            '<section class="card">' +
-            '<a class="bannerLink" href="' + link + '">' + banner + '</a>' +
-            '<div class="info">' +
-            '<div class="avatarwrap">' + avatar + '</div>' +
-            '<div class="namewrap">' +
-            '<h2 class="name"><a href="' + link + '">' + esc(p.name) + '</a>' + (p.verified ? check : "") + '</h2>' +
-            '<div class="handle">@' + esc(p.handle) + '</div>' +
-            '</div>' +
-            desc +
-            '<p class="stats"><b>' + shortnum(p.followers) + '</b> followers &middot; <b>' +
-                (p.archived_tweets || 0).toLocaleString("en-US") + '</b> archived tweets</p>' +
-            '<p class="files">' +
-            '<a class="primary" href="' + link + '">browse!</a>' +
-            '<a href="' + encodeURIComponent(p.folder) + '/users.json" download>users<small>' + esc(p.users_size || "") + '</small></a>' +
-            '<a href="' + encodeURIComponent(p.folder) + '/tweets.json" download>tweets<small>' + esc(p.tweets_size || "") + '</small></a>' +
-            '</p>' +
-            '</div>' +
-            '</section>';
-    }
-
-    (async () => {
-        const grid = document.querySelector(".grid");
-        const status = document.querySelector(".status");
-        try {
-            const r = await fetch("profiles.json");
-            if (!r.ok) throw new Error("profiles.json HTTP " + r.status);
-            const data = await r.json();
-            const list = data.profiles || [];
-            grid.innerHTML = list.map(card).join("");
-            status.remove();
-            if (window.twemoji) twemoji.parse(grid, {
-                base: "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
-                folder: "svg", ext: ".svg",
-            });
-        } catch (e) {
-            status.className = "status";
-            status.textContent = "failed to load: " + e.message;
-        }
-    })();
-
-</script>
 
 </body>
 </html>
