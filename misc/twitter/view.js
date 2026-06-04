@@ -322,7 +322,7 @@ function renderheaderprofile(meta) {
         '<div class="pstats">' +
         '<span><b>' + fmtcountshort(meta.following || 0) + '</b> Following</span>' +
         '<span><b>' + fmtcountshort(meta.followers || 0) + '</b> Followers</span>' +
-        (meta.posts ? '<span><b>' + fmtcountshort(meta.posts) + '</b> Posts</span>' : '') +
+        (meta.posts ? '<span><b>' + fmtcountshort(meta.posts) + '</b> Tweets</span>' : '') +
         '</div>';
 
     const folder = encodeURIComponent(collectionname);
