@@ -1262,9 +1262,9 @@ function fmtcountshort(n) {
 }
 
 function fmtbytes(n) {
-    if (n < 1024) return n + " B";
-    if (n < 1024*1024) return (n/1024).toFixed(1) + " KB";
-    return (n/1024/1024).toFixed(2) + " MB";
+    if (n < 1024) return n + "b";
+    if (n < 1024*1024) return (n/1024).toFixed(1) + "kb";
+    return (n/1024/1024).toFixed(2) + "mb";
 }
 
 function cmpid(a, b, op) {
