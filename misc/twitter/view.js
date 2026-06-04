@@ -302,10 +302,10 @@ function renderheadercommunity(meta) {
 
 function renderheaderprofile(meta) {
     const bannerhtml = meta.banner
-        ? '<div class="pbanner"><img src="' + escapeattr(meta.banner) + '" referrerpolicy="no-referrer" onerror="this.remove()"></div>'
+        ? '<div class="pbanner"><img src="' + escapeattr(mediaurl(meta.banner)) + '" referrerpolicy="no-referrer" onerror="this.remove()"></div>'
         : '<div class="pbanner"></div>';
     const avatarhtml = meta.avatar
-        ? '<div class="pavatarwrap"><img src="' + escapeattr(meta.avatar) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)"></div>'
+        ? '<div class="pavatarwrap"><img src="' + escapeattr(mediaurl(meta.avatar)) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)"></div>'
         : '<div class="pavatarwrap"></div>';
     const verifiedhtml = meta.verified ? iconverified : "";
 
@@ -666,7 +666,7 @@ function rendertweet(t, opts) {
     article.setAttribute("data-tweet-id", t.id);
     const u = state.userbyid.get(t.user_id) || t.syndicateduser || {};
     const avatar = u.avatar
-        ? '<img class="avatar" src="' + escapeattr(u.avatar) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
+        ? '<img class="avatar" src="' + escapeattr(mediaurl(u.avatar)) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
         : '<div class="avatar"></div>';
     const {strippednames, remainder} = stripleadingmentions(t);
     const replytargets = strippednames.length
@@ -867,7 +867,7 @@ function renderquotedplaceholder(t) {
 function renderquotedcard(q) {
     const u = state.userbyid.get(q.user_id) || q.syndicateduser || {};
     const avatarhtml = u.avatar
-        ? '<img class="qavatar" src="' + escapeattr(u.avatar) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
+        ? '<img class="qavatar" src="' + escapeattr(mediaurl(u.avatar)) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
         : '<div class="qavatar"></div>';
     const handle = u.username ? "@" + u.username : "@?";
     const mediahtml = rendermedia(q.media);
@@ -887,7 +887,7 @@ function rendermedia(media) {
     const items = media.slice(0, 4);
     const n = items.length;
     const inner = items.map(m => {
-        const thumb = m.thumbnail || "";
+        const thumb = mediaurl(m.thumbnail || "");
         const small = smallimg(thumb);
         // inline video: muted + playsinline so the observer can autoplay
         // it in view (gifs loop and hide controls, like twitter)
@@ -897,7 +897,7 @@ function rendermedia(media) {
                 ? 'loop muted playsinline preload="metadata"'
                 : 'controls muted playsinline preload="metadata"';
             return '<div class="mediaitem video">' +
-                '<video ' + attrs + ' poster="' + escapeattr(small) + '" src="' + escapeattr(m.video_url) + '" onerror="window.onmediaerror(this)"></video>' +
+                '<video ' + attrs + ' poster="' + escapeattr(small) + '" src="' + escapeattr(mediaurl(m.video_url)) + '" onerror="window.onmediaerror(this)"></video>' +
                 '</div>';
         }
         // pics
@@ -992,7 +992,7 @@ function renderuser(u) {
     row.className = "userrow";
     const authorhref = u.username ? "https://x.com/" + encodeURIComponent(u.username) : "#";
     const avatarhtml = u.avatar
-        ? '<img class="avatar" src="' + escapeattr(u.avatar) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
+        ? '<img class="avatar" src="' + escapeattr(mediaurl(u.avatar)) + '" loading="lazy" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
         : '<div class="avatar"></div>';
     const avatarlink = u.username
         ? '<a class="avatarlink" href="' + escapeattr(authorhref) + '" data-from="' + escapeattr(u.username) + '" target="_blank" rel="noopener">' + avatarhtml + '</a>'
@@ -1121,7 +1121,7 @@ function decodeandescape(s) { return escapehtml(replacetofu(decodeentities(s)));
 
 /*//////////////////////////////////////////////////////////////////////*/
 
-// tofu (x box)  detector that doesn't even work right now
+// tofu (x box) detector that doesn't even work right now
 const tofucanvas = document.createElement("canvas");
 const tofuctx = tofucanvas.getContext("2d");
 tofuctx.font = '15px "Chirp", -apple-system, "Segoe UI", "Helvetica Neue", sans-serif';
@@ -1159,6 +1159,26 @@ function imgwithname(url, name) {
 }
 function smallimg(url) { return imgwithname(url, "small"); }
 function origimg(url)  { return imgwithname(url, "orig"); }
+
+function usereleases() {
+    const m = CFG.media;
+    return !!(m && m.owner && m.repo);
+}
+function fnv1a(s) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+    return h >>> 0;
+}
+function mediaurl(p) {
+    if (!p || p.startsWith("http") || !usereleases()) return p || "";
+    const parts = p.split("/");
+    if (parts.length < 3) return p;
+    const handle = parts[0], cat = parts[parts.length - 2], file = parts[parts.length - 1];
+    const shards = state.community && state.community.media_shards && state.community.media_shards[cat];
+    let tag = "media-" + handle + "-" + cat;
+    if (shards && shards > 1) tag += "-" + (fnv1a(file) % shards + 1);
+    return "https://github.com/" + CFG.media.owner + "/" + CFG.media.repo + "/releases/download/" + tag + "/" + file;
+}
 
 function emojify(el) {
     if (el && window.twemoji) {
@@ -1552,7 +1572,7 @@ function wirefocal(focalel, focal) {
 function renderfocalhtml(t, quoted) {
     const u = state.userbyid.get(t.user_id) || t.syndicateduser || {};
     const avatarhtml = u.avatar
-        ? '<img class="avatar" src="' + escapeattr(u.avatar) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
+        ? '<img class="avatar" src="' + escapeattr(mediaurl(u.avatar)) + '" referrerpolicy="no-referrer" onerror="window.onavatarerror(this)">'
         : '<div class="avatar"></div>';
     const dname = decodeandescape(u.display_name || u.username || "(unknown)");
     const handle = u.username ? "@" + u.username : "@" + (t.user_id || "?");

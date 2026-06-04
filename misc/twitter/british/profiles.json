@@ -20,7 +20,10 @@
    "archived_tweets": 7778,
    "total_records": 14560,
    "users_size": "213.5 KB",
-   "tweets_size": "6.19 MB"
+   "tweets_size": "6.19 MB",
+   "media_shards": {
+    "images": 4
+   }
   },
   {
    "folder": "tommyaltinnit",
