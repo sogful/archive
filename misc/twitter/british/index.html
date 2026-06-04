@@ -113,7 +113,7 @@
 
 <script src="https://unpkg.com/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <script>
-    
+
     "use strict";
 
     const check = '<svg class="check" viewBox="0 0 22 22"><path fill="#1d9bf0" d="M20.4 11a4 4 0 0 0-2-3 4 4 0 0 0-.8-3.6 4 4 0 0 0-3.5-.8 4 4 0 0 0-3.1-2 4 4 0 0 0-3 2 4 4 0 0 0-3.6.8 4 4 0 0 0-.8 3.5 4 4 0 0 0-2 3.1 4 4 0 0 0 2 3 4 4 0 0 0 .8 3.6 4 4 0 0 0 3.5.8 4 4 0 0 0 3.1 2 4 4 0 0 0 3-2 3.3 3.3 0 0 0 4.4-4.3 4 4 0 0 0 2-3.1M9.7 14.9l-3.5-3.5 1.3-1.3 2.1 2L14 7.5l1.3 1.2z"/></svg>';
@@ -144,7 +144,7 @@
     }
 
     function card(p) {
-        const link = "view.html?profile=" + encodeURIComponent(p.folder);
+        const link = "view?profile=" + encodeURIComponent(p.folder);
         const banner = p.banner
             ? '<img class="banner" src="' + esc(mediaurl(p.banner)) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">'
             : '<div class="banner"></div>';
