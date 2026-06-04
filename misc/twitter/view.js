@@ -372,10 +372,10 @@ function switchtab(name, push) {
         t.classList.toggle("active", t.dataset.tab === name);
     }
     const placeholderbytab = {
-        top:     "Search top posts (Twitter syntax supported)",
-        tweets:  "Search tweets (Twitter syntax supported)",
-        replies: "Search replies (Twitter syntax supported)",
-        media:   "Search media tweets (Twitter syntax supported)",
+        top:     "Search top tweets...",
+        tweets:  "Search tweets...",
+        replies: "Search replies...",
+        media:   "Search media tweets...",
         users:   "Search members",
     };
     searchinput.placeholder = placeholderbytab[name] || "Search";
